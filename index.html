@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revistas - Portfólio Editorial</title>
+    <title>Revistas TETO PE - Portfólio Editorial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -170,19 +170,21 @@
         }
 
         .magazine-thumbnail {
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
+            height: 450px;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
         }
 
-        .magazine-thumbnail::before {
-            content: '📖';
-            font-size: 8rem;
-            opacity: 0.3;
+        .magazine-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .magazine-card:hover .magazine-thumbnail img {
+            transform: scale(1.05);
         }
 
         .magazine-badge {
@@ -192,9 +194,10 @@
             background: var(--white);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--primary-color);            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-weight: 700;            font-size: 0.9rem;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;
         }
 
         .magazine-badge.new {
@@ -235,15 +238,22 @@
 
         .magazine-info p {
             color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .magazine-info p strong,        .magazine-info p em {
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);            text-decoration: none;
+            color: var(--white);
+            text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.95rem;
@@ -283,7 +293,6 @@
             gap: 3rem;
             text-align: center;
         }
-
         .stat-item h3 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -292,7 +301,8 @@
         }
 
         .stat-item p {
-            font-size: 1.1rem;            color: var(--text-light);
+            font-size: 1.1rem;
+            color: var(--text-light);
             font-weight: 600;
         }
 
@@ -332,7 +342,6 @@
             background: var(--white);
             color: var(--primary-color);
         }
-
         .btn-white:hover {
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -342,6 +351,7 @@
             border: 2px solid var(--white);
             color: var(--white);
         }
+
         .btn-transparent:hover {
             background: var(--white);
             color: var(--primary-color);
@@ -380,8 +390,7 @@
         footer {
             background: var(--text-dark);
             color: var(--white);
-            padding: 3rem 0 2rem;
-            text-align: center;
+            padding: 3rem 0 2rem;            text-align: center;
         }
 
         .footer-content {
@@ -390,7 +399,8 @@
             align-items: center;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 2rem;        }
+            gap: 2rem;
+        }
 
         .social-links {
             display: flex;
@@ -429,9 +439,12 @@
                 font-size: 1rem;
             }
 
-            .magazines-grid {
-                grid-template-columns: 1fr;
+            .magazines-grid {                grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .magazine-thumbnail {
+                height: 350px;
             }
 
             .stats-grid {
@@ -439,7 +452,8 @@
                 gap: 2rem;
             }
 
-            .newsletter-form {                flex-direction: column;
+            .newsletter-form {
+                flex-direction: column;
             }
 
             .footer-content {
@@ -474,8 +488,7 @@
         }
 
         .magazine-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+            animation-delay: 0.2s;        }
 
         .magazine-card:nth-child(3) {
             animation-delay: 0.3s;
@@ -485,10 +498,11 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">REVISTAS</div>
+            <div class="logo">TETO PE</div>
             <ul class="nav-links">
                 <li><a href="#edicoes">Edições</a></li>
-                <li><a href="#sobre">Sobre</a></li>                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
         <div class="container">
@@ -503,7 +517,7 @@
         <section id="edicoes" class="container">
             <div class="section-title">
                 <h2>Edições Disponíveis</h2>
-                <p>Confira nossas últimas publicações e acesse conteúdo completo diretamente na plataforma de flipbook.</p>
+                <p>Confira nossas últimas publicações e acesse conteúdo completo diretamente em nossa plataforma de flipbook.</p>
             </div>
 
             <div class="magazines-grid">
@@ -511,7 +525,7 @@
                 <article class="magazine-card">
                     <div class="magazine-thumbnail">
                         <span class="magazine-badge new">NOVA</span>
-                        <span class="magazine-badge" style="top: 5rem;">ABRIL 2026</span>
+                        <img src="https://i.imgur.com/fUmLvvC.png" alt="Capa da Edição de Abril 2026">
                     </div>
                     <div class="magazine-info">
                         <h3>Edição de Abril</h3>
@@ -519,10 +533,35 @@
                             <span>📅 Abril 2026</span>
                             <span>📄 Flipbook Interativo</span>
                         </div>
-                        <p>Confira nossa mais recente edição com conteúdos atualizados e exclusivos. Navegue pela versão digital interativa e tenha uma experiência de leitura imersiva e dinâmica.</p>
+                        <p>A revista de abril da TETO PE já está no ar ♥️<br><br>
+                        <strong>Pulsar</strong> é mais do que uma leitura, esse é um convite: olhar de perto histórias reais, sentir o impacto de cada ação e entender como, juntos, estamos transformando vidas e territórios.<br><br>
+                        Entre uma pausa e um café, se permita conhecer as vozes, os caminhos e as conquistas que constroem a TETO todos os dias ☕✨</p>
+                         <em><strong>Xero, time de comunicação</strong></em> 📸</p>
                         <div>
-                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn">Ler Revista</a>
-                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
+                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn">Ler Revista</a>                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Março -->
+                <article class="magazine-card">
+                    <div class="magazine-thumbnail">
+                        <span class="magazine-badge">MARÇO 2026</span>
+                        <img src="https://i.imgur.com/vE87u1f.png" alt="Capa da Edição de Março 2026">
+                    </div>
+                    <div class="magazine-info">
+                        <h3>Edição de Março</h3>
+                        <div class="magazine-meta">
+                            <span>📅 Março 2026</span>
+                            <span>📄 Flipbook Interativo</span>
+                        </div>
+                        <p>Março chegou lembrando a gente de algo essencial: <strong>ouvir.</strong><br><br>
+                        Em <strong>Vozes</strong>, veremos que entre visitas, conversas e passos dentro dos <strong>territórios,</strong> a gente entendeu mais uma vez que nenhuma <strong>transformação</strong> começa sem escuta, e que, na maioria das vezes, são as <strong>mulheres</strong> que sustentam, articulam e dão direção a tudo isso.<br><br>
+                        Essa edição nasce desse encontro.🧡<br><br>
+                        <em>Xero, time de comunicação 📸</em></p>
+                        <div>
+                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn">Ler Revista</a>
+                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
                         </div>
                     </div>
                 </article>
@@ -531,38 +570,24 @@
                 <article class="magazine-card">
                     <div class="magazine-thumbnail">
                         <span class="magazine-badge">FEVEREIRO 2026</span>
+                        <img src="https://i.imgur.com/fHkUM0z.jpeg" alt="Capa da Edição de Fevereiro 2026">
                     </div>
                     <div class="magazine-info">
                         <h3>Edição de Fevereiro</h3>
                         <div class="magazine-meta">
                             <span>📅 Fevereiro 2026</span>
                             <span>📄 Flipbook Interativo</span>
-                        </div>                        <p>Esta edição traz conteúdos exclusivos e análises aprofundadas sobre os principais temas do mês. Navegue pela versão digital interativa e tenha uma experiência de leitura imersiva.</p>
+                        </div>
+                        <p>Depois de alguns surtos leves, muitos cafés e aquele clássico "acho que agora vai", a nossa revista mensal finalmente nasceu 💙<br><br>
+                        <strong>Sob o mesmo céu</strong>, tá cheia de ideias, histórias e pedacinhos de tudo que a gente acredita — tipo um abraço em formato de página (mas sem ser cafona, prometo).<br><br>
+                        Que vocês a leiam sem pressa,<br>
+                        como quem abre uma janela e deixa o ar entrar, e que alguma página encontre morada em vocês. 💙<br><br>
+                        <em>Xero, time de comunicação</em> 📸</p>
                         <div>
                             <a href="https://heyzine.com/flip-book/41fe9f6bab.html" target="_blank" class="btn">Ler Revista</a>
                             <a href="https://heyzine.com/flip-book/41fe9f6bab.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
                         </div>
-                    </div>
-                </article>
-
-                <!-- Março -->
-                <article class="magazine-card">
-                    <div class="magazine-thumbnail">
-                        <span class="magazine-badge">Março 2026</span>
-                    </div>
-                    <div class="magazine-info">
-                        <h3>Edição de Março</h3>
-                        <div class="magazine-meta">
-                            <span>📅 Março 2026</span>
-                            <span>📄 Flipbook Interativo</span>
-                        </div>
-                        <p>Comece o ano com nossa edição especial de Março, repleta de artigos inspiradores, entrevistas exclusivas e reportagens especiais que marcam o início de um novo ciclo.</p>
-                        <div>
-                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn">Ler Revista</a>
-                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
-                        </div>
-                    </div>
-                </article>
+                    </div>                </article>
             </div>
         </section>
 
@@ -586,7 +611,8 @@
                         <h3>∞</h3>
                         <p>Possibilidades</p>
                     </div>
-                </div>            </div>
+                </div>
+            </div>
         </section>
 
         <!-- CTA Section -->
@@ -595,44 +621,4 @@
                 <h2>Faça Parte da Nossa Jornada</h2>
                 <p>Acompanhe nossas publicações e receba notificações sobre novas edições e conteúdos exclusivos.</p>
                 <div class="cta-buttons">
-                    <a href="#edicoes" class="btn btn-white">Ver Edições</a>
-                    <a href="#newsletter" class="btn btn-transparent">Newsletter</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section id="newsletter" class="newsletter-section">
-            <div class="container">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color);">Newsletter</h2>
-                <p style="color: var(--text-light);">Receba atualizações sobre novas edições</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Em breve!');">
-                    <input type="email" placeholder="Seu melhor e-mail" required>
-                    <button type="submit" class="btn">Assinar</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer id="contato">
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">REVISTAS</div>
-                <div class="social-links">
-                    <a href="#" title="Facebook">📘</a>
-                    <a href="#" title="Instagram">📷</a>
-                    <a href="#" title="Twitter">🐦</a>
-                    <a href="#" title="LinkedIn">💼</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Portfólio Editorial. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.pre
+       
