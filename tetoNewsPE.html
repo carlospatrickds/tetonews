@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revistas - Portfólio Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2e6385;
+            --secondary-color: #588fb6;
+            --accent-color: #a1cbde;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;            background: url("image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;        }
+
+        /* Magazine Grid */
+        .magazines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .magazine-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .magazine-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .magazine-thumbnail {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magazine-thumbnail::before {
+            content: '📖';
+            font-size: 8rem;
+            opacity: 0.3;
+        }
+
+        .magazine-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary-color);            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .magazine-badge.new {
+            background: #e74c3c;
+            color: var(--white);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .magazine-info {
+            padding: 2.5rem;
+        }
+
+        .magazine-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .magazine-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .magazine-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .magazine-info p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(46, 99, 133, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--bg-light);
+            padding: 5rem 0;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-white:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-transparent {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        .btn-transparent:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .magazines-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .newsletter-form {                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .magazine-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .magazine-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .magazine-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .magazine-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">REVISTAS</div>
+            <ul class="nav-links">
+                <li><a href="#edicoes">Edições</a></li>
+                <li><a href="#sobre">Sobre</a></li>                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Portfólio Editorial</h1>
+                <p>Explore nossas publicações e descubra histórias inspiradoras, análises profundas e conteúdos exclusivos que transformam perspectivas.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="edicoes" class="container">
+            <div class="section-title">
+                <h2>Edições Disponíveis</h2>
+                <p>Confira nossas últimas publicações e acesse conteúdo completo diretamente na plataforma de flipbook.</p>
+            </div>
+
+            <div class="magazines-grid">
+                <!-- Abril -->
+                <article class="magazine-card">
+                    <div class="magazine-thumbnail">
+                        <span class="magazine-badge new">NOVA</span>
+                        <span class="magazine-badge" style="top: 5rem;">ABRIL 2026</span>
+                    </div>
+                    <div class="magazine-info">
+                        <h3>Edição de Abril</h3>
+                        <div class="magazine-meta">
+                            <span>📅 Abril 2026</span>
+                            <span>📄 Flipbook Interativo</span>
+                        </div>
+                        <p>Confira nossa mais recente edição com conteúdos atualizados e exclusivos. Navegue pela versão digital interativa e tenha uma experiência de leitura imersiva e dinâmica.</p>
+                        <div>
+                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn">Ler Revista</a>
+                            <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Fevereiro -->
+                <article class="magazine-card">
+                    <div class="magazine-thumbnail">
+                        <span class="magazine-badge">FEVEREIRO 2026</span>
+                    </div>
+                    <div class="magazine-info">
+                        <h3>Edição de Fevereiro</h3>
+                        <div class="magazine-meta">
+                            <span>📅 Fevereiro 2026</span>
+                            <span>📄 Flipbook Interativo</span>
+                        </div>                        <p>Esta edição traz conteúdos exclusivos e análises aprofundadas sobre os principais temas do mês. Navegue pela versão digital interativa e tenha uma experiência de leitura imersiva.</p>
+                        <div>
+                            <a href="https://heyzine.com/flip-book/41fe9f6bab.html" target="_blank" class="btn">Ler Revista</a>
+                            <a href="https://heyzine.com/flip-book/41fe9f6bab.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Março -->
+                <article class="magazine-card">
+                    <div class="magazine-thumbnail">
+                        <span class="magazine-badge">Março 2026</span>
+                    </div>
+                    <div class="magazine-info">
+                        <h3>Edição de Março</h3>
+                        <div class="magazine-meta">
+                            <span>📅 Março 2026</span>
+                            <span>📄 Flipbook Interativo</span>
+                        </div>
+                        <p>Comece o ano com nossa edição especial de Março, repleta de artigos inspiradores, entrevistas exclusivas e reportagens especiais que marcam o início de um novo ciclo.</p>
+                        <div>
+                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn">Ler Revista</a>
+                            <a href="https://heyzine.com/flip-book/b26547cf13.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>3</h3>
+                        <p>Edições Publicadas</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>2026</h3>
+                        <p>Ano de Publicação</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Digital & Interativo</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>∞</h3>
+                        <p>Possibilidades</p>
+                    </div>
+                </div>            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container">
+            <div class="cta-section">
+                <h2>Faça Parte da Nossa Jornada</h2>
+                <p>Acompanhe nossas publicações e receba notificações sobre novas edições e conteúdos exclusivos.</p>
+                <div class="cta-buttons">
+                    <a href="#edicoes" class="btn btn-white">Ver Edições</a>
+                    <a href="#newsletter" class="btn btn-transparent">Newsletter</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section id="newsletter" class="newsletter-section">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color);">Newsletter</h2>
+                <p style="color: var(--text-light);">Receba atualizações sobre novas edições</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Em breve!');">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn">Assinar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">REVISTAS</div>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Portfólio Editorial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.pre
