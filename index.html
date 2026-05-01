@@ -6,7 +6,7 @@
     <title>Revistas TETO PE - Portfólio Editorial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,42 +15,68 @@
         }
 
         :root {
-            --primary-color: #2e6385;
-            --secondary-color: #588fb6;
-            --accent-color: #a1cbde;
-            --text-dark: #2c3e50;
-            --text-light: #6c757d;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
-            --whatsapp-green: #25D366;
+            /* Paleta cromática principal - Manual de Marca TETO */
+            --teto-azul: #0092DD;
+            --teto-azul-escuro: #005ca9;
+            --teto-branco: #ffffff;
+            --teto-preto: #1d1d1b;
+            --teto-cinza: #C6C6C6;
+
+            /* Paleta cromática secundária */
+            --teto-amarelo: #fdc533;
+            --teto-verde: #2fac66;
+            --teto-rosa: #e94362;
+            --teto-rosa-claro: #f088b6;
+            --teto-roxo: #954B97;
+
+            /* Tipografias institucionais */
+            --fonte-principal: 'Fredoka', sans-serif;
+            --fonte-destaque: 'Permanent Marker', cursive;
+            --fonte-formal: 'Montserrat', sans-serif;
+
             --transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--fonte-formal);
             line-height: 1.6;
-            color: var(--text-dark);
+            color: var(--teto-preto);
             overflow-x: hidden;
+            background-color: var(--teto-branco);
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 4rem 0 6rem;
+            background: var(--teto-azul);
+            color: var(--teto-branco);
+            padding: 2rem 0 5rem;
             position: relative;
             overflow: hidden;
         }
 
+        /* Textura de fundo tipo splatter TETO */
         header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.1;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(253,197,51,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(47,172,102,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .container {
@@ -61,17 +87,31 @@
             z-index: 1;
         }
 
+        /* ===== NAV ===== */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text {
+            font-family: var(--fonte-principal);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -81,77 +121,98 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--teto-branco);
             text-decoration: none;
+            font-family: var(--fonte-principal);
             font-weight: 600;
             font-size: 0.95rem;
             transition: var(--transition);
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--white);
+            height: 3px;
+            background: var(--teto-amarelo);
             transition: var(--transition);
+            border-radius: 2px;
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
+        .nav-links a:hover {
+            color: var(--teto-amarelo);
+        }
+
+        /* ===== HERO ===== */
         .hero-content {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            padding: 2rem 0;
         }
 
         .hero-content h1 {
+            font-family: var(--fonte-principal);
             font-size: 3.5rem;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero-content p {
+            font-family: var(--fonte-formal);
             font-size: 1.25rem;
-            font-weight: 300;
+            font-weight: 400;
             opacity: 0.95;
             line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Main Content */
+        /* ===== MAIN ===== */
         main {
-            padding: 4rem 0;
+            padding: 0 0 4rem;
             margin-top: -3rem;
             position: relative;
             z-index: 2;
         }
 
+        /* ===== SECTION TITLES ===== */
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
+            padding-top: 4rem;
         }
 
         .section-title h2 {
+            font-family: var(--fonte-principal);
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--teto-azul);
             margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
         .section-title p {
+            font-family: var(--fonte-formal);
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.7;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Magazine Grid */
+        /* ===== MAGAZINE GRID ===== */
         .magazines-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -160,24 +221,26 @@
         }
 
         .magazine-card {
-            background: var(--white);
+            background: var(--teto-branco);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,146,221,0.15);
             transition: var(--transition);
             cursor: pointer;
+            border: 2px solid transparent;
         }
 
         .magazine-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,146,221,0.25);
+            border-color: var(--teto-azul);
         }
 
         .magazine-thumbnail {
             position: relative;
             height: 450px;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, var(--teto-azul) 0%, var(--teto-azul-escuro) 100%);
         }
 
         .magazine-thumbnail img {
@@ -195,19 +258,22 @@
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            background: var(--white);
+            background: var(--teto-amarelo);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
+            font-family: var(--fonte-principal);
             font-weight: 700;
             font-size: 0.9rem;
-            color: var(--primary-color);
+            color: var(--teto-preto);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .magazine-badge.new {
-            background: #e74c3c;
-            color: var(--white);
+            background: var(--teto-rosa);
+            color: var(--teto-branco);
             animation: pulse 2s infinite;
         }
 
@@ -221,9 +287,10 @@
         }
 
         .magazine-info h3 {
+            font-family: var(--fonte-principal);
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--teto-azul);
             margin-bottom: 1rem;
         }
 
@@ -231,8 +298,10 @@
             display: flex;
             gap: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.6;
             font-size: 0.95rem;
+            font-family: var(--fonte-formal);
         }
 
         .magazine-meta span {
@@ -242,116 +311,174 @@
         }
 
         .magazine-info p {
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.8;
             line-height: 1.9;
             margin-bottom: 2rem;
+            font-family: var(--fonte-formal);
             font-weight: 400;
         }
 
-        .magazine-info p strong,
-        .magazine-info p em {
-            color: var(--primary-color);
+        .magazine-info p strong {
+            color: var(--teto-azul);
             font-weight: 700;
         }
 
+        .magazine-info p em {
+            color: var(--teto-rosa);
+            font-weight: 600;
+            font-style: normal;
+            font-family: var(--fonte-destaque);
+            font-size: 1.05em;
+        }
+
+        .magazine-info > em {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: var(--teto-azul);
+            font-family: var(--fonte-destaque);
+            font-size: 1.1rem;
+        }
+
+        /* ===== BUTTONS ===== */
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
+            background: var(--teto-azul);
+            color: var(--teto-branco);
             text-decoration: none;
             border-radius: 50px;
+            font-family: var(--fonte-principal);
             font-weight: 700;
             font-size: 0.95rem;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,146,221,0.3);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(46, 99, 133, 0.3);
+            background: var(--teto-azul-escuro);
+            box-shadow: 0 10px 30px rgba(0,146,221,0.4);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid var(--teto-azul);
+            color: var(--teto-azul);
             margin-left: 1rem;
+            box-shadow: none;
         }
 
         .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--teto-azul);
+            color: var(--teto-branco);
+            box-shadow: 0 10px 30px rgba(0,146,221,0.3);
         }
 
         .btn-whatsapp {
-            background: var(--whatsapp-green);
-            color: var(--white);
+            background: var(--teto-verde);
+            color: var(--teto-branco);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(47,172,102,0.3);
         }
 
         .btn-whatsapp:hover {
-            background: #128C7E;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            background: #258a52;
+            box-shadow: 0 10px 30px rgba(47,172,102,0.4);
         }
 
-        /* Comments Section */
+        /* ===== COMMENTS SECTION ===== */
         .comments-section {
-            background: var(--bg-light);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
             margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comments-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--teto-azul), var(--teto-amarelo), var(--teto-verde), var(--teto-rosa), var(--teto-roxo));
         }
 
         .comments-container {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--white);
+            background: var(--teto-branco);
             padding: 3rem;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 2px solid var(--teto-cinza);
         }
 
         .comments-container h3 {
+            font-family: var(--fonte-principal);
             font-size: 2rem;
-            color: var(--primary-color);
+            color: var(--teto-azul);
             margin-bottom: 1rem;
             text-align: center;
         }
 
         .comments-container > p {
             text-align: center;
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.6;
             margin-bottom: 2rem;
+            font-family: var(--fonte-formal);
         }
 
         .comment-moderation-notice {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
+            background: var(--teto-amarelo);
+            border-left: 4px solid var(--teto-azul);
             padding: 1rem 1.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
-            color: #856404;
+            color: var(--teto-preto);
             font-size: 0.95rem;
+            font-family: var(--fonte-formal);
         }
 
         .comment-moderation-notice strong {
             display: block;
             margin-bottom: 0.5rem;
+            color: var(--teto-azul);
+            font-family: var(--fonte-principal);
         }
 
         #disqus_thread {
             margin-top: 2rem;
         }
 
-        /* Stats Section */
+        /* ===== STATS SECTION ===== */
         .stats-section {
-            background: var(--bg-light);
+            background: var(--teto-azul);
             padding: 5rem 0;
             margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
         }
 
         .stats-grid {
@@ -359,44 +486,80 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-item h3 {
+            font-family: var(--fonte-principal);
             font-size: 3.5rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--teto-amarelo);
             margin-bottom: 0.5rem;
         }
 
         .stat-item p {
+            font-family: var(--fonte-formal);
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--teto-branco);
             font-weight: 600;
+            opacity: 0.9;
         }
 
-        /* CTA Section */
+        /* ===== CTA SECTION ===== */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
+            background: var(--teto-azul);
+            color: var(--teto-branco);
             padding: 5rem 0;
             text-align: center;
             border-radius: 20px;
             margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(253,197,51,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(47,172,102,0.15) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .cta-section h2 {
+            font-family: var(--fonte-principal);
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
         }
 
         .cta-section p {
+            font-family: var(--fonte-formal);
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
             opacity: 0.95;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-buttons {
@@ -404,43 +567,54 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-white {
-            background: var(--white);
-            color: var(--primary-color);
+            background: var(--teto-branco);
+            color: var(--teto-azul);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
         }
 
         .btn-white:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: var(--teto-amarelo);
+            color: var(--teto-preto);
+            box-shadow: 0 10px 30px rgba(253,197,51,0.4);
         }
 
         .btn-transparent {
             background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
+            border: 2px solid var(--teto-branco);
+            color: var(--teto-branco);
+            box-shadow: none;
         }
 
         .btn-transparent:hover {
-            background: var(--white);
-            color: var(--primary-color);
+            background: var(--teto-branco);
+            color: var(--teto-azul);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
         }
 
-        /* Contact Section */
+        /* ===== CONTACT SECTION ===== */
         .contact-section {
             padding: 5rem 0;
             text-align: center;
         }
 
         .contact-section h2 {
+            font-family: var(--fonte-principal);
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--teto-azul);
             margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
         .contact-section > p {
+            font-family: var(--fonte-formal);
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.7;
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
@@ -456,16 +630,18 @@
         }
 
         .contact-card {
-            background: var(--white);
+            background: var(--teto-branco);
             padding: 3rem 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,146,221,0.1);
             transition: var(--transition);
+            border: 2px solid var(--teto-cinza);
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 50px rgba(0,146,221,0.2);
+            border-color: var(--teto-azul);
         }
 
         .contact-icon {
@@ -474,22 +650,54 @@
         }
 
         .contact-card h3 {
+            font-family: var(--fonte-principal);
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: var(--teto-azul);
             margin-bottom: 1rem;
         }
 
         .contact-card p {
-            color: var(--text-light);
+            color: var(--teto-preto);
+            opacity: 0.7;
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            font-family: var(--fonte-formal);
         }
 
-        /* Newsletter */
+        /* ===== NEWSLETTER ===== */
         .newsletter-section {
-            background: var(--bg-light);
+            background: linear-gradient(135deg, var(--teto-amarelo) 0%, #ffe066 100%);
             padding: 4rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230092DD' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .newsletter-section h2 {
+            font-family: var(--fonte-principal);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--teto-preto);
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-section > p {
+            color: var(--teto-preto);
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+            font-family: var(--fonte-formal);
         }
 
         .newsletter-form {
@@ -497,27 +705,51 @@
             margin: 2rem auto 0;
             display: flex;
             gap: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .newsletter-form input {
             flex: 1;
             padding: 1rem 1.5rem;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--teto-preto);
             border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--fonte-formal);
             font-size: 1rem;
             transition: var(--transition);
+            background: var(--teto-branco);
         }
 
         .newsletter-form input:focus {
             outline: none;
-            border-color: var(--secondary-color);
+            border-color: var(--teto-azul);
+            box-shadow: 0 0 0 3px rgba(0,146,221,0.2);
         }
 
-        /* Footer */
+        .newsletter-form button {
+            background: var(--teto-azul);
+            color: var(--teto-branco);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: var(--fonte-principal);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--teto-azul-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,146,221,0.4);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
-            background: var(--text-dark);
-            color: var(--white);
+            background: var(--teto-preto);
+            color: var(--teto-branco);
             padding: 3rem 0 2rem;
             text-align: center;
         }
@@ -531,19 +763,38 @@
             gap: 2rem;
         }
 
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo span {
+            font-family: var(--fonte-principal);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
         .social-links {
             display: flex;
             gap: 1.5rem;
         }
 
         .social-links a {
-            color: var(--white);
+            color: var(--teto-branco);
             font-size: 1.5rem;
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            color: var(--teto-amarelo);
             transform: translateY(-3px);
         }
 
@@ -552,9 +803,10 @@
             padding-top: 2rem;
             color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
+            font-family: var(--fonte-formal);
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -578,7 +830,7 @@
             }
 
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
 
@@ -603,9 +855,14 @@
             .contact-options {
                 grid-template-columns: 1fr;
             }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
-        /* Animations */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -621,23 +878,30 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .magazine-card:nth-child(1) {
-            animation-delay: 0.1s;
+        .magazine-card:nth-child(1) { animation-delay: 0.1s; }
+        .magazine-card:nth-child(2) { animation-delay: 0.2s; }
+        .magazine-card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .magazine-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .magazine-card:nth-child(3) {
-            animation-delay: 0.3s;
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">TETO PE</div>
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/TETO_logo.svg/1200px-TETO_logo.svg.png" alt="TETO Logo" onerror="this.style.display='none'">
+                <span class="logo-text">TETO PE</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#edicoes">Edições</a></li>
                 <li><a href="#comentarios">Comentários</a></li>
@@ -663,7 +927,7 @@
                 <!-- Abril -->
                 <article class="magazine-card">
                     <div class="magazine-thumbnail">
-                        <span class="magazine-badge new">NOVA</span>
+                        <span class="magazine-badge new">Nova</span>
                         <img src="https://i.imgur.com/fUmLvvC.png" alt="Capa da Edição de Abril 2026">
                     </div>
                     <div class="magazine-info">
@@ -675,7 +939,7 @@
                         <p>A revista de abril da TETO PE já está no ar ♥️<br><br>
                         <strong>Pulsar</strong> é mais do que uma leitura, esse é um convite: olhar de perto histórias reais, sentir o impacto de cada ação e entender como, juntos, estamos transformando vidas e territórios.<br><br>
                         Entre uma pausa e um café, se permita conhecer as vozes, os caminhos e as conquistas que constroem a TETO todos os dias ☕✨</p>
-                        <em><strong>Xero, time de comunicação</strong></em> 📸
+                        <em>Xero, time de comunicação 📸</em>
                         <div>
                             <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn">Ler Revista</a>
                             <a href="https://heyzine.com/flip-book/a10d578818.html" target="_blank" class="btn btn-outline">Saiba Mais</a>
@@ -686,7 +950,7 @@
                 <!-- Março -->
                 <article class="magazine-card">
                     <div class="magazine-thumbnail">
-                        <span class="magazine-badge">MARÇO 2026</span>
+                        <span class="magazine-badge">Março 2026</span>
                         <img src="https://i.imgur.com/vE87u1f.png" alt="Capa da Edição de Março 2026">
                     </div>
                     <div class="magazine-info">
@@ -709,7 +973,7 @@
                 <!-- Fevereiro -->
                 <article class="magazine-card">
                     <div class="magazine-thumbnail">
-                        <span class="magazine-badge">FEVEREIRO 2026</span>
+                        <span class="magazine-badge">Fevereiro 2026</span>
                         <img src="https://i.imgur.com/fHkUM0z.jpeg" alt="Capa da Edição de Fevereiro 2026">
                     </div>
                     <div class="magazine-info">
@@ -738,7 +1002,7 @@
                 <div class="comments-container">
                     <h3>💬 Comentários</h3>
                     <p>Compartilhe sua opinião sobre nossas revistas</p>
-                    
+
                     <div class="comment-moderation-notice">
                         <strong>⚠️ Moderação de Comentários</strong>
                         Todos os comentários passam por aprovação antes de serem publicados. 
@@ -748,23 +1012,14 @@
                     <!-- Disqus Comments -->
                     <div id="disqus_thread"></div>
                     <script>
-                        /**
-                        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-                        */
-                        
                         var disqus_config = function () {
-                            this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
-                            this.page.identifier = 'teto-pe-revistas'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            this.page.url = window.location.href;
+                            this.page.identifier = 'teto-pe-revistas';
                         };
-                        
-                        (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+
+                        (function() {
                             var d = document, s = d.createElement('script');
-                            
-                            // IMPORTANT: Replace 'teto-pe-revistas' with your Disqus shortname
-                            // You can find your shortname in your Disqus admin panel
                             s.src = 'https://https-carlospatrickds-github-io-tetonews.disqus.com/embed.js';
-                            
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -815,7 +1070,7 @@
             <div class="container">
                 <h2>Entre em Contato</h2>
                 <p>Tem dúvidas, sugestões ou quer saber mais sobre nosso trabalho? Estamos aqui para ajudar!</p>
-                
+
                 <div class="contact-options">
                     <div class="contact-card">
                         <div class="contact-icon">💬</div>
@@ -828,12 +1083,12 @@
                             Conversar no WhatsApp
                         </a>
                     </div>
-                    
+
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h3>E-mail</h3>
                         <p>Prefere enviar um e-mail? Mande sua mensagem que responderemos em breve.</p>
-                        <a href="mailto:contato@tetope.org.br" class="btn">Enviar E-mail</a>
+                        <a href="emailaqui" class="btn">Enviar E-mail</a>
                     </div>
                 </div>
             </div>
@@ -842,11 +1097,11 @@
         <!-- Newsletter -->
         <section class="newsletter-section">
             <div class="container">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color);">Newsletter</h2>
-                <p style="color: var(--text-light);">Receba atualizações sobre novas edições</p>
+                <h2>Newsletter</h2>
+                <p>Receba atualizações sobre novas edições</p>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Em breve!');">
                     <input type="email" placeholder="Seu melhor e-mail" required>
-                    <button type="submit" class="btn">Assinar</button>
+                    <button type="submit">Assinar</button>
                 </form>
             </div>
         </section>
@@ -855,11 +1110,11 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">TETO PE</div>
+                <div class="footer-logo">
+                    <span>TETO PE</span>
+                </div>
                 <div class="social-links">
-                    <a href="#" title="Facebook">📘</a>
-                    <a href="#" title="Instagram">📷</a>
-                    <a href="#" title="Twitter">🐦</a>
+                    <a href="https://www.instagram.com/teto.br.pe/" title="Instagram">📷</a>
                     <a href="https://w.app/pp3o0d" target="_blank" title="WhatsApp">💬</a>
                 </div>
             </div>
@@ -893,16 +1148,13 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.magazine-card, .stat-item, .contact-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
+        document.querySelectorAll('.stat-item, .contact-card, .section-title').forEach(el => {
+            el.classList.add('animate-on-scroll');
             observer.observe(el);
         });
 
@@ -911,13 +1163,13 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const currentScroll = window.pageYOffset;
-            
+
             if (currentScroll > 100) {
                 header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
             } else {
                 header.style.boxShadow = 'none';
             }
-            
+
             lastScroll = currentScroll;
         });
     </script>
